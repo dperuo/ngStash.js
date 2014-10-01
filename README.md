@@ -1,7 +1,7 @@
 ngStash.js
 ==========
 
-An Angular factory for working with localStorage and sessionStorage.
+An Angular factory for working with `localStorage` and `sessionStorage`.
 
 Quick Start
 -----------
