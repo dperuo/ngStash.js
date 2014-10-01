@@ -6,11 +6,11 @@ An Angular factory for working with `localStorage` and `sessionStorage`.
 Quick Start
 -----------
 Add ngStash as a module dependency.
-
 ```
 angular
   .module('myApp', ['ngStash']);
 ```
+
 Add `localStash` or `sessionStash` as a controller dependency.
 ```
 angular
@@ -29,18 +29,21 @@ Basic API
 ```
 localStash.set(key, value)
 ```
+Values are automatically converted to strings using `JSON.stringify()`.
 
-Values are automatically converted to strings using `JSON.stringify`.
 
 ### Get Record
 ```
 localStash.get(key)
 ```
+Valuse are automatically converted back to their original type using `JSON.parse()`.
+
 
 ### Remove Record
 ```
 localStash.remove(key)
 ```
+
 
 ### Clear Storage
 ```
