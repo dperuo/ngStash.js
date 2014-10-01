@@ -15,7 +15,7 @@ Add `localStash` or `sessionStash` as a controller dependency.
 ```
 angular
   .module('myApp', ['ngStash'])
-  .contrller('myCtrl', ['localStash', function (localStash) {
+  .controller('myCtrl', ['localStash', function (localStash) {
     // ...
   }]);
 ```
