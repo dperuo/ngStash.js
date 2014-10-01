@@ -30,6 +30,8 @@ Basic API
 localStash.set(key, value)
 ```
 
+Values are automatically converted to strings using `JSON.stringify`.
+
 ### Get Record
 ```
 localStash.get(key)
