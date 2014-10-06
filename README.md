@@ -29,7 +29,7 @@ Basic API
 ```
 localStash.set(key, value)
 ```
-Values are automatically converted to strings using `JSON.stringify()`.
+Keys and values are automatically converted to strings using `JSON.stringify()`.
 
 
 ### Get Record
