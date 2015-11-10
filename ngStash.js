@@ -1,75 +1,64 @@
-/*
+/**
  * ngStash.js
+ * v1.0.0
+ * An Angular factory for working with localStorage and sessionStorage
  *
- * v0.2.0
- *
- * An Angular factory for working with localStorage and sessionStorage.
- *
- * Released under the MIT License.
- *
- * Derek Peruo
+ * Copyright 2015 Derek Peruo
  * http://github.com/dperuo
- *
+ * Released under the MIT License
  */
 
+(function(undefined) {
+  'use strict';
 
+  angular
+    .module('ngStash', [])
+    .factory('SessionStash', SessionStashFn)
+    .factory('LocalStash', LocalStashFn);
 
-'use strict';
+  SessionStashFn.$inject = ['$window'];
+  LocalStashFn.$inject = ['$window'];
 
-angular
-  .module('ngStash', [])
-  .factory('sessionStash', sessionStash)
-  .factory('localStash', localStash);
+  function SessionStashFn($window) {
+    return {
+      set: function(key, value) {
+        $window.sessionStorage.setItem(JSON.stringify(key), JSON.stringify(value));
+      },
 
-sessionStash.$inject = ['$window'];
-localStash.$inject = ['$window'];
+      get: function(key) {
+        return JSON.parse($window.sessionStorage.getItem(key));
+      },
 
-function sessionStash ($window) {
-  return {
-    set: function (key, value) {
-      var newKey = stringify(key),
-          newVal = stringify(value);
+      remove: function(key) {
+        $window.sessionStorage.removeItem(JSON.stringify(key));
+      },
 
-      $window.sessionStorage.setItem(newKey, newVal);
-    },
-    get: function (key) {
-      var val = JSON.parse($window.sessionStorage.getItem(key));
-      return val;
-    },
-    remove: function(key) {
-      $window.sessionStorage.removeItem(key);
-    },
-    clear: function () {
-      $window.sessionStorage.clear();
-    }
-  };
-}
+      clear: function () {
+        $window.sessionStorage.clear();
+      }
+    };
+  }
 
-function localStash ($window) {
-  return {
-    set: function (key, value) {
-      var newKey = stringify(key),
-          newVal = stringify(value);
+  function LocalStashFn($window) {
+    return {
+      set: function(key, value) {
+        var stringKey = JSON.stringify(key);
+        var stringVal = JSON.stringify(value);
 
-      $window.localStorage.setItem(newKey, newVal);
-    },
-    get: function (key) {
-      var val = JSON.parse($window.localStorage.getItem(key));
-      return val;
-    },
-    remove: function(key) {
-      $window.localStorage.removeItem(key);
-    },
-    clear: function () {
-      $window.localStorage.clear();
-    }
-  };
-}
+        $window.localStorage.setItem(stringKey, stringVal);
+      },
 
+      get: function(key) {
+        return JSON.parse($window.localStorage.getItem(key));
+      },
 
+      remove: function(key) {
+        $window.localStorage.removeItem(JSON.stringify(key));
+      },
 
-// --------------- HELPER FUNCTIONS --------------- //
-function stringify (value) {
-  var stringified = (typeof(value) === 'string' ) ? value : JSON.stringify(value);
-  return stringified;
-}
+      clear: function () {
+        $window.localStorage.clear();
+      }
+    };
+  }
+})();
