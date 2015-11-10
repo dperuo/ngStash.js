@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/dperuo/ngStash.js",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "node_modules/.bin/uglifyjs ./src/ngStash.js -o ./dist/ngStash.min.js -c --preamble '/* v1.0.0 - MIT License - http://github.com/dperuo */'"
+  },
+  "devDependencies": {
+    "uglify-js": "^2.5.0"
   }
 }
