@@ -1,11 +1,9 @@
 {
-  "name": "ng-stash",
-  "version": "0.1.0",
+  "name": "ngStash",
+  "version": "1.0.0",
   "description": "An Angular factory for working with localStorage and sessionStorage.",
   "main": "ng-stash.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "bin": "ng-stash.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/dperuo/ngStash.js.git"
@@ -22,12 +20,7 @@
     "url": "https://github.com/dperuo/ngStash.js/issues"
   },
   "homepage": "https://github.com/dperuo/ngStash.js",
-  "devDependencies": {
-    "angular": "^1.2.23",
-    "angular-mocks": "^1.2.22",
-    "karma": "^0.12.24",
-    "karma-beep-reporter": "^0.1.4",
-    "karma-jasmine": "^0.1.5",
-    "karma-phantomjs-launcher": "^0.1.4"
+  "scripts": {
+    "test": "exit 0"
   }
 }
