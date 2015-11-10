@@ -20,21 +20,21 @@
   LocalStashFn.$inject = ['$window'];
 
   function SessionStashFn($window) {
-    return GenericStash('sessionStorage');
+    return GenericStash('sessionStorage', $window);
   }
 
   function LocalStashFn($window) {
-    return GenericStash('localStorage');
+    return GenericStash('localStorage', $window);
   }
 
-  function GenericStash(type) {
+  function GenericStash(type, $window) {
     return {
       set: function(key, value) {
         $window[type].setItem(JSON.stringify(key), JSON.stringify(value));
       },
 
       get: function(key) {
-        return JSON.parse($window[type].getItem(key));
+        return JSON.parse($window[type].getItem(JSON.stringify(key)));
       },
 
       remove: function(key) {
