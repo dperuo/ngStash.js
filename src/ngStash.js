@@ -20,44 +20,29 @@
   LocalStashFn.$inject = ['$window'];
 
   function SessionStashFn($window) {
-    return {
-      set: function(key, value) {
-        $window.sessionStorage.setItem(JSON.stringify(key), JSON.stringify(value));
-      },
-
-      get: function(key) {
-        return JSON.parse($window.sessionStorage.getItem(key));
-      },
-
-      remove: function(key) {
-        $window.sessionStorage.removeItem(JSON.stringify(key));
-      },
-
-      clear: function () {
-        $window.sessionStorage.clear();
-      }
-    };
+    return GenericStash('sessionStorage');
   }
 
   function LocalStashFn($window) {
+    return GenericStash('localStorage');
+  }
+
+  function GenericStash(type) {
     return {
       set: function(key, value) {
-        var stringKey = JSON.stringify(key);
-        var stringVal = JSON.stringify(value);
-
-        $window.localStorage.setItem(stringKey, stringVal);
+        $window[type].setItem(JSON.stringify(key), JSON.stringify(value));
       },
 
       get: function(key) {
-        return JSON.parse($window.localStorage.getItem(key));
+        return JSON.parse($window[type].getItem(key));
       },
 
       remove: function(key) {
-        $window.localStorage.removeItem(JSON.stringify(key));
+        $window[type].removeItem(JSON.stringify(key));
       },
 
       clear: function () {
-        $window.localStorage.clear();
+        $window[type].clear();
       }
     };
   }
