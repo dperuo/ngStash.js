@@ -23,7 +23,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "build": "node_modules/.bin/uglifyjs ./src/ngStash.js -o ./dist/ngStash.min.js -c --preamble '/* v1.0.0 - MIT License - http://github.com/dperuo */'",
-    "test": "exit 0",
+    "test": "exit 0"
   },
   "devDependencies": {
     "uglify-js": "^2.5.0"
