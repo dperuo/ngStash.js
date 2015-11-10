@@ -1,53 +1,58 @@
 [![Build Status](https://travis-ci.org/dperuo/ngStash.js.svg)](https://travis-ci.org/dperuo/ngStash.js)
 
-ngStash.js
-==========
+# ngStash.js
 
 An Angular factory for working with `localStorage` and `sessionStorage`.
 
-Quick Start
------------
+## Quick Start
+
 Add ngStash as a module dependency.
+
 ```
 angular
   .module('myApp', ['ngStash']);
 ```
 
-Add `localStash` or `sessionStash` as a controller dependency.
+Add `LocalStash` or `SessionStash` as a controller dependency.
+
 ```
 angular
   .module('myApp', ['ngStash'])
-  .controller('myCtrl', ['localStash', function (localStash) {
+  .controller('myCtrl', ['LocalStash', function (localStash) {
     // ...
   }]);
 ```
 
 
-
-Basic API
----------
+## Basic API
 
 ### Set Record
-```
-localStash.set(key, value)
-```
+
 Keys and values are automatically converted to strings using `JSON.stringify()`.
+
+```
+LocalStash.set(key, value)
+```
 
 
 ### Get Record
+
+Values are automatically converted back to their original type using `JSON.parse()`.
+
 ```
-localStash.get(key)
+LocalStash.get(key)
 ```
-Valuse are automatically converted back to their original type using `JSON.parse()`.
 
 
 ### Remove Record
+
 ```
-localStash.remove(key)
+LocalStash.remove(key)
 ```
 
 
 ### Clear Storage
+
 ```
 localStash.clear()
 ```
