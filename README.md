@@ -54,5 +54,5 @@ LocalStash.remove(key)
 ### Clear Storage
 
 ```
-localStash.clear()
+LocalStash.clear()
 ```
